@@ -15,7 +15,7 @@ func pushAnyData(value interface{}) {
 
 func popFromAnyDataTypeStack() {
 	if len(anyDataTypeStack) == 0 {
-		fmt.Println("Generic stack is empty. Cannot perform pop operation.")
+		fmt.Println("stack is empty. Cannot perform pop operation.")
 		return
 	}
 	lastElement := anyDataTypeStack[len(anyDataTypeStack)-1]
