@@ -1,8 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var stack []int
+
+var anyDataTypeStack []interface{}
+
+func pushAnyData(value interface{}) {
+	anyDataTypeStack = append(anyDataTypeStack, value)
+	fmt.Println("Pushed (value):", value)
+}
+
+func popFromAnyDataTypeStack() {
+	if len(anyDataTypeStack) == 0 {
+		fmt.Println("Generic stack is empty. Cannot perform pop operation.")
+		return
+	}
+	lastElement := anyDataTypeStack[len(anyDataTypeStack)-1]
+	anyDataTypeStack = anyDataTypeStack[:len(anyDataTypeStack)-1]
+	fmt.Println("Popped Element:", lastElement)
+}
 
 func push(value int) {
 	stack = append(stack, value)
@@ -27,5 +46,24 @@ func main() {
 	push(3)
 	fmt.Println(stack)
 	pop()
+	pop()
+	pop()
+	pop()
 	fmt.Println("After Pop Operation ", stack)
+
+	// AnyDataType Stack Operations
+	pushAnyData(42)
+	pushAnyData("GoLang")
+	pushAnyData(3.14)
+	pushAnyData(true)
+	pushAnyData([]int{1, 2, 3})
+	pushAnyData(map[string]int{"a": 1})
+
+	fmt.Println("Any Data Type Stack:", anyDataTypeStack)
+
+	popFromAnyDataTypeStack()
+	popFromAnyDataTypeStack()
+
+	fmt.Println("After Pop Operation in AnyDataTypeStack : ",anyDataTypeStack)
+
 }
