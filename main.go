@@ -10,6 +10,11 @@ func push(value int) {
 }
 
 func pop() {
+
+	if len(stack) == 0 {
+		fmt.Println("Stack is empty. Cannot perform pop operation.")
+		return
+	}
 	lastElemet := stack[len(stack)-1]
 	stack = stack[:len(stack)-1]
 
